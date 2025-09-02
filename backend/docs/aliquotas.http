@@ -1,0 +1,50 @@
+
+###LIST ALIQUOTAS
+GET http://localhost:8000/api/aliquotas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER ALIQUOTAS
+GET http://localhost:8000/api/aliquotas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR ALIQUOTAS
+POST http://localhost:8000/api/aliquotas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "business_id":1
+
+}
+####MUDAR ALIQUOTAS
+POST http://localhost:8000/api/aliquotas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "business_id":1
+
+}
+
+####APAGAR ALIQUOTAS
+POST http://localhost:8000/api/aliquotas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

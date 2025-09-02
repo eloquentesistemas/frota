@@ -1,0 +1,49 @@
+###LIST PRODUTO_QUESTIONARIOS
+GET http://localhost:8000/api/produto_questionarios
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PRODUTO_QUESTIONARIOS
+GET http://localhost:8000/api/produto_questionarios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PRODUTO_QUESTIONARIOS
+POST http://localhost:8000/api/produto_questionarios
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "produto_id":1
+
+}
+####MUDAR PRODUTO_QUESTIONARIOS
+POST http://localhost:8000/api/produto_questionarios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "produto_id":1
+
+}
+
+####APAGAR PRODUTO_QUESTIONARIOS
+POST http://localhost:8000/api/produto_questionarios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

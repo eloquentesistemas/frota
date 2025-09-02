@@ -1,0 +1,49 @@
+###LIST USER_UNIDADE_ANEXOS
+GET http://localhost:8000/api/user_unidade_anexos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER USER_UNIDADE_ANEXOS
+GET http://localhost:8000/api/user_unidade_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR USER_UNIDADE_ANEXOS
+POST http://localhost:8000/api/user_unidade_anexos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "user_unidade_id":1,
+    "arquivo":"file",
+    "nome":"Loren Epsun",
+    "ext":"Loren Epsun"
+
+}
+####MUDAR USER_UNIDADE_ANEXOS
+POST http://localhost:8000/api/user_unidade_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "user_unidade_id":1,
+    "arquivo":"file",
+    "nome":"Loren Epsun",
+    "ext":"Loren Epsun"
+
+}
+
+####APAGAR USER_UNIDADE_ANEXOS
+POST http://localhost:8000/api/user_unidade_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

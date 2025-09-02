@@ -1,0 +1,66 @@
+
+###LIST LEADS
+GET http://localhost:8000/api/leads
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER LEADS
+GET http://localhost:8000/api/leads/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR LEADS
+POST http://localhost:8000/api/leads
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "cidade_id":1,
+    "telefone":"Loren Epsun",
+    "atendimento":"Loren Epsun",
+    "cpf":"Loren Epsun",
+    "email":"Loren Epsun",
+    "cnpj":"Loren Epsun",
+    "aceita_comunicacao":1,
+    "aceitou_termo":1,
+    "tipo":"Loren Epsun",
+    "url":"Loren Epsun",
+    "status":"Loren Epsun"
+
+}
+####MUDAR LEADS
+POST http://localhost:8000/api/leads/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "cidade_id":1,
+    "telefone":"Loren Epsun",
+    "atendimento":"Loren Epsun",
+    "cpf":"Loren Epsun",
+    "email":"Loren Epsun",
+    "cnpj":"Loren Epsun",
+    "aceita_comunicacao":1,
+    "aceitou_termo":1,
+    "tipo":"Loren Epsun",
+    "url":"Loren Epsun",
+    "status":"Loren Epsun"
+
+}
+
+####APAGAR LEADS
+POST http://localhost:8000/api/leads/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

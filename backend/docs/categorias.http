@@ -1,0 +1,45 @@
+
+###LISTAR Categorias
+GET http://localhost:8000/api/categorias?parent_id=1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTEwOTQ4NDcsImV4cCI6MTY5MTA5ODQ0NywibmJmIjoxNjkxMDk0ODQ3LCJqdGkiOiJER3lNRVJybU9yWXBCQmxvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c_ttr8m7q10Vix3OLRJ2nEOrQauX_VKsKfEMb5onY04
+Content-Type: application/json
+Accept: application/json
+
+###VER Categorias
+GET http://localhost:8000/api/categorias/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTEwOTQ4NDcsImV4cCI6MTY5MTA5ODQ0NywibmJmIjoxNjkxMDk0ODQ3LCJqdGkiOiJER3lNRVJybU9yWXBCQmxvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c_ttr8m7q10Vix3OLRJ2nEOrQauX_VKsKfEMb5onY04
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR Categorias
+POST http://localhost:8000/api/categorias
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTEwOTQ4NDcsImV4cCI6MTY5MTA5ODQ0NywibmJmIjoxNjkxMDk0ODQ3LCJqdGkiOiJER3lNRVJybU9yWXBCQmxvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c_ttr8m7q10Vix3OLRJ2nEOrQauX_VKsKfEMb5onY04
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome": "Certificado",
+    "descritivo": null,
+    "parent_id": null
+}
+####MUDAR Categorias
+POST http://localhost:8000/api/categorias/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTEwOTQ4NDcsImV4cCI6MTY5MTA5ODQ0NywibmJmIjoxNjkxMDk0ODQ3LCJqdGkiOiJER3lNRVJybU9yWXBCQmxvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c_ttr8m7q10Vix3OLRJ2nEOrQauX_VKsKfEMb5onY04
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome": "Certificada",
+    "descritivo": null,
+    "parent_id": null
+}
+####APAGAR Categorias
+POST http://localhost:8000/api/categorias/4
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTEwOTQ4NDcsImV4cCI6MTY5MTA5ODQ0NywibmJmIjoxNjkxMDk0ODQ3LCJqdGkiOiJER3lNRVJybU9yWXBCQmxvIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.c_ttr8m7q10Vix3OLRJ2nEOrQauX_VKsKfEMb5onY04
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

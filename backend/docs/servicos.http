@@ -1,0 +1,58 @@
+
+###LIST SERVICOS
+GET http://localhost:8000/api/servicos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER SERVICOS
+GET http://localhost:8000/api/servicos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR SERVICOS
+POST http://localhost:8000/api/servicos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ecommerce":1,
+    "preco":1.1,
+    "aliquota_id":1,
+    "categoria_id":1,
+    "ativo":1,
+    "business_id":1
+
+}
+####MUDAR SERVICOS
+POST http://localhost:8000/api/servicos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "ecommerce":1,
+    "preco":1.1,
+    "aliquota_id":1,
+    "categoria_id":1,
+    "ativo":1,
+    "business_id":1
+
+}
+
+####APAGAR SERVICOS
+POST http://localhost:8000/api/servicos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

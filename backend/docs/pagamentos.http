@@ -1,0 +1,51 @@
+###LIST PAGAMENTOS
+GET http://localhost:8000/api/pagamentos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PAGAMENTOS
+GET http://localhost:8000/api/pagamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PAGAMENTOS
+POST http://localhost:8000/api/pagamentos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "data_ocorrido":"2001-05-11",
+    "valor":1.1,
+    "parcela":1,
+    "descritivo":"Loren Epsun",
+    "conta_id":1
+
+}
+####MUDAR PAGAMENTOS
+POST http://localhost:8000/api/pagamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "data_ocorrido":"2001-05-11",
+    "valor":1.1,
+    "parcela":1,
+    "descritivo":"Loren Epsun",
+    "conta_id":1
+
+}
+
+####APAGAR PAGAMENTOS
+POST http://localhost:8000/api/pagamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

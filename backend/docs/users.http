@@ -1,0 +1,54 @@
+
+###LIST USERS
+GET http://localhost:8000/api/users
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER USERS
+GET http://localhost:8000/api/users/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR USERS
+POST http://localhost:8000/api/users
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name":"Loren Epsun",
+    "email":"Loren Epsun",
+    "email_verified_at":"2001-05-11 10:00:03",
+    "password":"Loren Epsun",
+    "business_id":1,
+    "remember_token":"Loren Epsun"
+
+}
+####MUDAR USERS
+POST http://localhost:8000/api/users/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "name":"Loren Epsun",
+    "email":"Loren Epsun",
+    "email_verified_at":"2001-05-11 10:00:03",
+    "password":"Loren Epsun",
+    "business_id":1,
+    "remember_token":"Loren Epsun"
+
+}
+
+####APAGAR USERS
+POST http://localhost:8000/api/users/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

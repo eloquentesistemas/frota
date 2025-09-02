@@ -1,0 +1,47 @@
+###LIST RELATORIOS
+GET http://localhost:8000/api/relatorios
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER RELATORIOS
+GET http://localhost:8000/api/relatorios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR RELATORIOS
+POST http://localhost:8000/api/relatorios
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "querysql":"Loren Epsun"
+
+}
+####MUDAR RELATORIOS
+POST http://localhost:8000/api/relatorios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "querysql":"Loren Epsun"
+
+}
+
+####APAGAR RELATORIOS
+POST http://localhost:8000/api/relatorios/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

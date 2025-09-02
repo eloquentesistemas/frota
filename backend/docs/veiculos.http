@@ -1,0 +1,53 @@
+###LIST VEICULOS
+GET http://localhost:8000/api/veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER VEICULOS
+GET http://localhost:8000/api/veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR VEICULOS
+POST http://localhost:8000/api/veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "placa":"Loren Epsun",
+    "cor":"value",
+    "vencimento_documento":"2001-05-11",
+    "ativo":1,
+    "descritivo":"Loren Epsun"
+
+}
+####MUDAR VEICULOS
+POST http://localhost:8000/api/veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "placa":"Loren Epsun",
+    "cor":"value",
+    "vencimento_documento":"2001-05-11",
+    "ativo":1,
+    "descritivo":"Loren Epsun"
+
+}
+
+####APAGAR VEICULOS
+POST http://localhost:8000/api/veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

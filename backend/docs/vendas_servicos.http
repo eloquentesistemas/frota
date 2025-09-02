@@ -1,0 +1,50 @@
+
+###LIST VENDAS_SERVICOS
+GET http://localhost:8000/api/vendas_servicos?venda_id=5
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjkzOTYsImV4cCI6MTY5MTE3Mjk5NiwibmJmIjoxNjkxMTY5Mzk2LCJqdGkiOiIyZHBzUTlZc3BtZkRhdmdkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m0c-haBXa7R6nCJ3pvxh1X9CA1MKekUHFdMTa9bZLa4
+Content-Type: application/json
+Accept: application/json
+
+###VER VENDAS_SERVICOS
+GET http://localhost:8000/api/vendas_servicos/2
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjkzOTYsImV4cCI6MTY5MTE3Mjk5NiwibmJmIjoxNjkxMTY5Mzk2LCJqdGkiOiIyZHBzUTlZc3BtZkRhdmdkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m0c-haBXa7R6nCJ3pvxh1X9CA1MKekUHFdMTa9bZLa4
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR VENDAS_SERVICOS
+POST http://localhost:8000/api/vendas_servicos
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjkzOTYsImV4cCI6MTY5MTE3Mjk5NiwibmJmIjoxNjkxMTY5Mzk2LCJqdGkiOiIyZHBzUTlZc3BtZkRhdmdkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m0c-haBXa7R6nCJ3pvxh1X9CA1MKekUHFdMTa9bZLa4
+Content-Type: application/json
+Accept: application/json
+
+{
+    "impostos":"[]",
+    "produto_id":1,
+    "valor":1.1,
+    "venda_id":1
+
+}
+####MUDAR VENDAS_SERVICOS
+POST http://localhost:8000/api/vendas_servicos/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjkzOTYsImV4cCI6MTY5MTE3Mjk5NiwibmJmIjoxNjkxMTY5Mzk2LCJqdGkiOiIyZHBzUTlZc3BtZkRhdmdkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m0c-haBXa7R6nCJ3pvxh1X9CA1MKekUHFdMTa9bZLa4
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "impostos":"[]",
+    "produto_id":1,
+    "valor":1.1,
+    "venda_id":1
+
+}
+
+####APAGAR VENDAS_SERVICOS
+POST http://localhost:8000/api/vendas_servicos/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjkzOTYsImV4cCI6MTY5MTE3Mjk5NiwibmJmIjoxNjkxMTY5Mzk2LCJqdGkiOiIyZHBzUTlZc3BtZkRhdmdkIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.m0c-haBXa7R6nCJ3pvxh1X9CA1MKekUHFdMTa9bZLa4
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

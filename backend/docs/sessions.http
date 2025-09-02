@@ -1,0 +1,52 @@
+
+###LIST SESSIONS
+GET http://localhost:8000/api/sessions
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER SESSIONS
+GET http://localhost:8000/api/sessions/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR SESSIONS
+POST http://localhost:8000/api/sessions
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "image_video":"Loren Epsun",
+    "parent_id":1,
+    "business_id":1
+
+}
+####MUDAR SESSIONS
+POST http://localhost:8000/api/sessions/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "image_video":"Loren Epsun",
+    "parent_id":1,
+    "business_id":1
+
+}
+
+####APAGAR SESSIONS
+POST http://localhost:8000/api/sessions/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

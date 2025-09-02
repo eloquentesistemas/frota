@@ -1,0 +1,49 @@
+###LIST PEDIDO_PROPOSTAS
+GET http://localhost:8000/api/pedido_propostas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PEDIDO_PROPOSTAS
+GET http://localhost:8000/api/pedido_propostas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PEDIDO_PROPOSTAS
+POST http://localhost:8000/api/pedido_propostas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "produto_id":1,
+    "pessoa_id":1
+
+}
+####MUDAR PEDIDO_PROPOSTAS
+POST http://localhost:8000/api/pedido_propostas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "descritivo":"Loren Epsun",
+    "ativo":1,
+    "produto_id":1,
+    "pessoa_id":1
+
+}
+
+####APAGAR PEDIDO_PROPOSTAS
+POST http://localhost:8000/api/pedido_propostas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

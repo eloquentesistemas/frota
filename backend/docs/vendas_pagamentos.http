@@ -1,0 +1,52 @@
+
+###LIST VENDAS_PAGAMENTOS
+GET http://localhost:8000/api/vendas_pagamentos?venda_id=1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNzE1NTAsImV4cCI6MTY5MTE3NTE1MCwibmJmIjoxNjkxMTcxNTUwLCJqdGkiOiJFRHMxdjRyRXh6dGFNaGdZIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.pz3CbCOAEBmZG9yg35ILnbGUjdAdnV1zcE399d5QMnE
+Content-Type: application/json
+Accept: application/json
+
+###VER VENDAS_PAGAMENTOS
+GET http://localhost:8000/api/vendas_pagamentos/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjY4MDEsImV4cCI6MTY5MTE3MDQwMSwibmJmIjoxNjkxMTY2ODAxLCJqdGkiOiJ3aUh5YVhRNzZkcUdWd1NJIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8z7QuzeZRTmGeXGfjAlZlxKSQncWDDH9OGQwBQoI8dg
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR VENDAS_PAGAMENTOS
+POST http://localhost:8000/api/vendas_pagamentos
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjY4MDEsImV4cCI6MTY5MTE3MDQwMSwibmJmIjoxNjkxMTY2ODAxLCJqdGkiOiJ3aUh5YVhRNzZkcUdWd1NJIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8z7QuzeZRTmGeXGfjAlZlxKSQncWDDH9OGQwBQoI8dg
+Content-Type: application/json
+Accept: application/json
+
+{
+    "desconto":1.1,
+    "impostos":"[]",
+    "tipo_pagamento":"Loren Epsun",
+    "valor":1.1,
+    "venda_id":1
+
+}
+####MUDAR VENDAS_PAGAMENTOS
+POST http://localhost:8000/api/vendas_pagamentos/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjY4MDEsImV4cCI6MTY5MTE3MDQwMSwibmJmIjoxNjkxMTY2ODAxLCJqdGkiOiJ3aUh5YVhRNzZkcUdWd1NJIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8z7QuzeZRTmGeXGfjAlZlxKSQncWDDH9OGQwBQoI8dg
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "desconto":1.1,
+    "impostos":"[]",
+    "tipo_pagamento":"Loren Epsun",
+    "valor":1.1,
+    "venda_id":1
+
+}
+
+####APAGAR VENDAS_PAGAMENTOS
+POST http://localhost:8000/api/vendas_pagamentos/2
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjY4MDEsImV4cCI6MTY5MTE3MDQwMSwibmJmIjoxNjkxMTY2ODAxLCJqdGkiOiJ3aUh5YVhRNzZkcUdWd1NJIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.8z7QuzeZRTmGeXGfjAlZlxKSQncWDDH9OGQwBQoI8dg
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

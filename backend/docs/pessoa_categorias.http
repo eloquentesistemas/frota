@@ -1,0 +1,49 @@
+###LIST PESSOA_CATEGORIAS
+GET http://localhost:8000/api/pessoa_categorias
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PESSOA_CATEGORIAS
+GET http://localhost:8000/api/pessoa_categorias/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PESSOA_CATEGORIAS
+POST http://localhost:8000/api/pessoa_categorias
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "tipo":"value",
+    "ativo":1
+
+}
+####MUDAR PESSOA_CATEGORIAS
+POST http://localhost:8000/api/pessoa_categorias/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "tipo":"value",
+    "ativo":1
+
+}
+
+####APAGAR PESSOA_CATEGORIAS
+POST http://localhost:8000/api/pessoa_categorias/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

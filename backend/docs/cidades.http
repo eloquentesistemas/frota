@@ -1,0 +1,47 @@
+###LIST CIDADES
+GET http://localhost:8000/api/cidades
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER CIDADES
+GET http://localhost:8000/api/cidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR CIDADES
+POST http://localhost:8000/api/cidades
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "codigo":"Loren Epsun",
+    "nome":"Loren Epsun",
+    "uf":"Loren Epsun"
+
+}
+####MUDAR CIDADES
+POST http://localhost:8000/api/cidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "codigo":"Loren Epsun",
+    "nome":"Loren Epsun",
+    "uf":"Loren Epsun"
+
+}
+
+####APAGAR CIDADES
+POST http://localhost:8000/api/cidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

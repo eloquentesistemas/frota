@@ -1,0 +1,87 @@
+
+###REGISTRAR USUÁRIO
+
+POST http://localhost:8000/api/auth/register
+Accept: application/json,
+Content-Type: application/json
+
+{
+  "name": "Luan Marcos Figueira Nascimento",
+  "email": "luanmarcosfgns@gmail.com",
+  "password": "admin",
+  "business_id": null
+}
+
+###PARA ADQUIRIR TOKEN VIA LOGIN
+
+POST http://localhost:8000/api/auth/login
+Accept: application/json,
+Content-Type: application/json
+
+{
+    "email": "luanmarcosfgns@gmail.com",
+    "password": "admin"
+}
+
+
+
+
+###ADQUIRIR DADOS DO USUÁRIO
+
+POST http://localhost:8000/api/auth/me
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+{}
+
+###LISTAR USUARIOS
+GET http://localhost:8000/api/usuarios
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+###LOCALIZAR USUARIOS
+GET http://localhost:8000/api/usuarios/1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR USUARIOS
+POST http://localhost:8000/api/usuarios
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": " Figueira Nascimento",
+    "email": "luanmarcosfgns@hoAtmail.com",
+    "password": "admin",
+    "business_id": 1
+}
+
+####MUDAR USUÁRIOS
+POST http://localhost:8000/api/usuarios/2
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "name": "Marcos Figueira NascimentA",
+    "email": "luanmarcosfgns@hotmail.com",
+    "password": "admin",
+    "business_id": 1
+}
+
+####APAGAR  USUÁRIOS
+POST http://localhost:8000/api/usuarios/3
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTA5OTc2NzIsImV4cCI6MTY5MTAwMTI3MiwibmJmIjoxNjkwOTk3NjcyLCJqdGkiOiJJRGxOb2dnVVg2eUVBTEc4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VVCU8G0-1WP8o-VpKaiQRSyhB_XyLQmgYX0uaB-S7es
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}
+
+

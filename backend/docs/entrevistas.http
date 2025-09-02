@@ -1,0 +1,52 @@
+
+###LIST ENTREVISTAS
+GET http://localhost:8000/api/entrevistas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER ENTREVISTAS
+GET http://localhost:8000/api/entrevistas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR ENTREVISTAS
+POST http://localhost:8000/api/entrevistas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "ativo":1,
+    "business_id":1,
+    "descritivo":"Loren Epsun",
+    "nome":"Loren Epsun",
+    "servico_id":1
+
+}
+####MUDAR ENTREVISTAS
+POST http://localhost:8000/api/entrevistas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "ativo":1,
+    "business_id":1,
+    "descritivo":"Loren Epsun",
+    "nome":"Loren Epsun",
+    "servico_id":1
+
+}
+
+####APAGAR ENTREVISTAS
+POST http://localhost:8000/api/entrevistas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

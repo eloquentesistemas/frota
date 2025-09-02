@@ -1,0 +1,49 @@
+###LIST ABASTECIMENTO_VEICULOS
+GET http://localhost:8000/api/abastecimento_veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER ABASTECIMENTO_VEICULOS
+GET http://localhost:8000/api/abastecimento_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR ABASTECIMENTO_VEICULOS
+POST http://localhost:8000/api/abastecimento_veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "veiculo_id":1,
+    "quilometragem":1,
+    "litros":1.1,
+    "valor":1.1
+
+}
+####MUDAR ABASTECIMENTO_VEICULOS
+POST http://localhost:8000/api/abastecimento_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "veiculo_id":1,
+    "quilometragem":1,
+    "litros":1.1,
+    "valor":1.1
+
+}
+
+####APAGAR ABASTECIMENTO_VEICULOS
+POST http://localhost:8000/api/abastecimento_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

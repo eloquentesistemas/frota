@@ -1,0 +1,50 @@
+
+###LIST SERVICOS_ANEXOS
+GET http://localhost:8000/api/servicos_anexos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER SERVICOS_ANEXOS
+GET http://localhost:8000/api/servicos_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR SERVICOS_ANEXOS
+POST http://localhost:8000/api/servicos_anexos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "anexo":"file",
+    "extensao":"Loren Epsun",
+    "tipo":"value",
+    "servico_id":1
+
+}
+####MUDAR SERVICOS_ANEXOS
+POST http://localhost:8000/api/servicos_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "anexo":"file",
+    "extensao":"Loren Epsun",
+    "tipo":"value",
+    "servico_id":1
+
+}
+
+####APAGAR SERVICOS_ANEXOS
+POST http://localhost:8000/api/servicos_anexos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

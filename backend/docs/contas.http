@@ -1,0 +1,55 @@
+###LIST CONTAS
+GET http://localhost:8000/api/contas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER CONTAS
+GET http://localhost:8000/api/contas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR CONTAS
+POST http://localhost:8000/api/contas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "data_ocorrido":"2001-05-11",
+    "nome":"Loren Epsun",
+    "modalidade":"value",
+    "natureza_financeira_id":1,
+    "valor":1.1,
+    "parcelas":1,
+    "descritivo":"Loren Epsun"
+
+}
+####MUDAR CONTAS
+POST http://localhost:8000/api/contas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "data_ocorrido":"2001-05-11",
+    "nome":"Loren Epsun",
+    "modalidade":"value",
+    "natureza_financeira_id":1,
+    "valor":1.1,
+    "parcelas":1,
+    "descritivo":"Loren Epsun"
+
+}
+
+####APAGAR CONTAS
+POST http://localhost:8000/api/contas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

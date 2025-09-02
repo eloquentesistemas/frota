@@ -1,0 +1,71 @@
+###LIST FATURAMENTOS
+GET http://localhost:8000/api/faturamentos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER FATURAMENTOS
+GET http://localhost:8000/api/faturamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR FATURAMENTOS
+POST http://localhost:8000/api/faturamentos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pessoa_motorista_id":1,
+    "veiculo_id":1,
+    "data_embarque":"2001-05-11 10:00:03",
+    "origem_cidade_id":1,
+    "origem_local":"Loren Epsun",
+    "destino_cidade_id":1,
+    "destino_local":"Loren Epsun",
+    "pessoa_cliente_id":1,
+    "danfe":1,
+    "peso":1.1,
+    "valor_acerto_motorista":1.1,
+    "valor_total":1.1,
+    "DMT":"Loren Epsun",
+    "carga":"Loren Epsun",
+    "descritivo":"Loren Epsun"
+
+}
+####MUDAR FATURAMENTOS
+POST http://localhost:8000/api/faturamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "pessoa_motorista_id":1,
+    "veiculo_id":1,
+    "data_embarque":"2001-05-11 10:00:03",
+    "origem_cidade_id":1,
+    "origem_local":"Loren Epsun",
+    "destino_cidade_id":1,
+    "destino_local":"Loren Epsun",
+    "pessoa_cliente_id":1,
+    "danfe":1,
+    "peso":1.1,
+    "valor_acerto_motorista":1.1,
+    "valor_total":1.1,
+    "DMT":"Loren Epsun",
+    "carga":"Loren Epsun",
+    "descritivo":"Loren Epsun"
+
+}
+
+####APAGAR FATURAMENTOS
+POST http://localhost:8000/api/faturamentos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

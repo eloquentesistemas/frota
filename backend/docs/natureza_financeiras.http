@@ -1,0 +1,45 @@
+###LIST NATUREZA_FINANCEIRAS
+GET http://localhost:8000/api/natureza_financeiras
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER NATUREZA_FINANCEIRAS
+GET http://localhost:8000/api/natureza_financeiras/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR NATUREZA_FINANCEIRAS
+POST http://localhost:8000/api/natureza_financeiras
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun"
+
+}
+####MUDAR NATUREZA_FINANCEIRAS
+POST http://localhost:8000/api/natureza_financeiras/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun"
+
+}
+
+####APAGAR NATUREZA_FINANCEIRAS
+POST http://localhost:8000/api/natureza_financeiras/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

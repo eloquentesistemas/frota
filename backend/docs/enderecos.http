@@ -1,0 +1,56 @@
+
+###LIST ENDERECOS
+GET http://localhost:8000/api/enderecos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER ENDERECOS
+GET http://localhost:8000/api/enderecos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR ENDERECOS
+POST http://localhost:8000/api/enderecos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "contato_id":1,
+    "endereco":"Loren Epsun",
+    "numero":"Loren Epsun",
+    "bairro":"Loren Epsun",
+    "cidade":"Loren Epsun",
+    "cep":"Loren Epsun",
+    "business_id":1
+
+}
+####MUDAR ENDERECOS
+POST http://localhost:8000/api/enderecos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "contato_id":1,
+    "endereco":"Loren Epsun",
+    "numero":"Loren Epsun",
+    "bairro":"Loren Epsun",
+    "cidade":"Loren Epsun",
+    "cep":"Loren Epsun",
+    "business_id":1
+
+}
+
+####APAGAR ENDERECOS
+POST http://localhost:8000/api/enderecos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

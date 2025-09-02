@@ -1,0 +1,53 @@
+###LIST PRODUTO_PERGUNTAS
+GET http://localhost:8000/api/produto_perguntas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PRODUTO_PERGUNTAS
+GET http://localhost:8000/api/produto_perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PRODUTO_PERGUNTAS
+POST http://localhost:8000/api/produto_perguntas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "enunciado":"Loren Epsun",
+    "tipo":"value",
+    "obrigatorio":1,
+    "ordem":1,
+    "questionario_id":1,
+    "ativo":1
+
+}
+####MUDAR PRODUTO_PERGUNTAS
+POST http://localhost:8000/api/produto_perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "enunciado":"Loren Epsun",
+    "tipo":"value",
+    "obrigatorio":1,
+    "ordem":1,
+    "questionario_id":1,
+    "ativo":1
+
+}
+
+####APAGAR PRODUTO_PERGUNTAS
+POST http://localhost:8000/api/produto_perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

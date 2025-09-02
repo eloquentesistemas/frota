@@ -1,0 +1,49 @@
+###LIST USER_UNIDADES
+GET http://localhost:8000/api/user_unidades
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER USER_UNIDADES
+GET http://localhost:8000/api/user_unidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR USER_UNIDADES
+POST http://localhost:8000/api/user_unidades
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "cidade_id":1,
+    "cnpj":"Loren Epsun"
+
+}
+####MUDAR USER_UNIDADES
+POST http://localhost:8000/api/user_unidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "nome":"Loren Epsun",
+    "descritivo":"Loren Epsun",
+    "cidade_id":1,
+    "cnpj":"Loren Epsun"
+
+}
+
+####APAGAR USER_UNIDADES
+POST http://localhost:8000/api/user_unidades/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

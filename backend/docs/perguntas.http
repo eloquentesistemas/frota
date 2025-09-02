@@ -1,0 +1,54 @@
+
+###LIST PERGUNTAS
+GET http://localhost:8000/api/perguntas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PERGUNTAS
+GET http://localhost:8000/api/perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PERGUNTAS
+POST http://localhost:8000/api/perguntas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "business_id":1,
+    "entrevista_id":1,
+    "enunciado":"Loren Epsun",
+    "opcoes":"[]",
+    "ordem":1,
+    "tipo_resposta":"value"
+
+}
+####MUDAR PERGUNTAS
+POST http://localhost:8000/api/perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "business_id":1,
+    "entrevista_id":1,
+    "enunciado":"Loren Epsun",
+    "opcoes":"[]",
+    "ordem":1,
+    "tipo_resposta":"value"
+
+}
+
+####APAGAR PERGUNTAS
+POST http://localhost:8000/api/perguntas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

@@ -1,0 +1,60 @@
+
+###LIST BUSINESS
+GET http://localhost:8000/api/business
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER BUSINESS
+GET http://localhost:8000/api/business/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR BUSINESS
+POST http://localhost:8000/api/business
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "fantasia":"Loren Epsun",
+    "razao":"Loren Epsun",
+    "cnpj_cpf":"Loren Epsun",
+    "ie_rg":"Loren Epsun",
+    "endereco":"Loren Epsun",
+    "numero":"Loren Epsun",
+    "cep":"Loren Epsun",
+    "telefone":"Loren Epsun",
+    "celular":"Loren Epsun"
+
+}
+####MUDAR BUSINESS
+POST http://localhost:8000/api/business/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "fantasia":"Loren Epsun",
+    "razao":"Loren Epsun",
+    "cnpj_cpf":"Loren Epsun",
+    "ie_rg":"Loren Epsun",
+    "endereco":"Loren Epsun",
+    "numero":"Loren Epsun",
+    "cep":"Loren Epsun",
+    "telefone":"Loren Epsun",
+    "celular":"Loren Epsun"
+
+}
+
+####APAGAR BUSINESS
+POST http://localhost:8000/api/business/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

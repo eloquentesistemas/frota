@@ -1,0 +1,52 @@
+
+###LIST VENDAS
+GET http://localhost:8000/api/vendas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER VENDAS
+GET http://localhost:8000/api/vendas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR VENDAS
+POST http://localhost:8000/api/vendas
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "contato_id":1,
+    "descritivo":"Loren Epsun",
+    "valor_total":1.1,
+    "impostos_totais":"[]",
+    "business_id":1
+
+}
+####MUDAR VENDAS
+POST http://localhost:8000/api/vendas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "contato_id":1,
+    "descritivo":"Loren Epsun",
+    "valor_total":1.1,
+    "impostos_totais":"[]",
+    "business_id":1
+
+}
+
+####APAGAR VENDAS
+POST http://localhost:8000/api/vendas/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

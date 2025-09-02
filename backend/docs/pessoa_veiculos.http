@@ -1,0 +1,45 @@
+###LIST PESSOA_VEICULOS
+GET http://localhost:8000/api/pessoa_veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER PESSOA_VEICULOS
+GET http://localhost:8000/api/pessoa_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR PESSOA_VEICULOS
+POST http://localhost:8000/api/pessoa_veiculos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pessoa_id":1,
+    "veiculo_id":1
+
+}
+####MUDAR PESSOA_VEICULOS
+POST http://localhost:8000/api/pessoa_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "pessoa_id":1,
+    "veiculo_id":1
+
+}
+
+####APAGAR PESSOA_VEICULOS
+POST http://localhost:8000/api/pessoa_veiculos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}
