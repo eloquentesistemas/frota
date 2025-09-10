@@ -19,6 +19,8 @@ class AbastecimentoVeiculoController extends Controller
             'quilometragem'=>['required'],
             'litros'=>['required','numeric'],
             'valor'=>['required','numeric'],
+            'pessoa_id'=>['nullable','numeric'],
+            'numero_nota'=>['nullable','numeric'],
         ]
         );
     }else{
@@ -27,9 +29,11 @@ class AbastecimentoVeiculoController extends Controller
             'quilometragem'=>['required'],
             'litros'=>['required','numeric'],
             'valor'=>['required','numeric'],
+            'pessoa_id'=>['nullable','numeric'],
+            'numero_nota'=>['nullable','numeric'],
         ]);
     }
-        return $request->only(["veiculo_id","quilometragem","litros","valor"]);
+        return $request->only(["veiculo_id","quilometragem","litros","valor","pessoa_id","numero_nota"]);
     }
     /**
      * Display a listing of the resource.
@@ -46,10 +50,13 @@ class AbastecimentoVeiculoController extends Controller
                 "abastecimento_veiculos.id",
                 DB::raw('concat(veiculos.id,"-",veiculos.nome," Placa: ",veiculos.placa," Cor: ",veiculos.cor) as veiculo_id'),
                 "abastecimento_veiculos.quilometragem",
-                "abastecimento_veiculos.litros",
-                DB::raw('REPLACE(FORMAT(abastecimento_veiculos.valor, 2), ".", ",") as valor')
+                DB::raw('REPLACE(FORMAT(abastecimento_veiculos.litros, 2), ".", ",") as litros'),
+                DB::raw('REPLACE(FORMAT(abastecimento_veiculos.valor, 2), ".", ",") as valor'),
+                DB::raw('CONCAT(pessoas.id,"-",pessoas.nome, " (",pessoas.cpf_cnpj,")") as pessoa_id')
             )
+            ->leftJoin('pessoas', 'abastecimento_veiculos.pessoa_id', 'pessoas.id')
             ->join('veiculos', 'abastecimento_veiculos.veiculo_id', 'veiculos.id')
+            ->orderBy("abastecimento_veiculos.id", "desc")
         ->paginate(1000);
 
         return response()->json($abastecimento_veiculos);

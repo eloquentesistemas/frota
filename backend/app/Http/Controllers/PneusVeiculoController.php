@@ -19,6 +19,9 @@ class PneusVeiculoController extends Controller
             'quilometragem'=>['required'],
             'quantidade'=>['required'],
             'valor'=>['required','numeric'],
+            'aro'=>['nullable','numeric'],
+            'marca'=>['nullable'],
+            'pessoa_id'=>['nullable'],
         ]
         );
     }else{
@@ -27,9 +30,12 @@ class PneusVeiculoController extends Controller
             'quilometragem'=>['required'],
             'quantidade'=>['required'],
             'valor'=>['required','numeric'],
+            'aro'=>['nullable','numeric'],
+            'marca'=>['nullable'],
+            'pessoa_id'=>['nullable'],
         ]);
     }
-        return $request->only(["veiculo_id","quilometragem","quantidade","valor"]);
+        return $request->only(["veiculo_id","quilometragem","quantidade","valor",'aro','marca','pessoa_id']);
     }
     /**
      * Display a listing of the resource.
@@ -47,9 +53,12 @@ class PneusVeiculoController extends Controller
                 DB::raw('concat(veiculos.id, "-", veiculos.nome, " Placa: ", veiculos.placa, " Cor: ", veiculos.cor) as veiculo_id'),
                 "pneus_veiculos.quilometragem",
                 "pneus_veiculos.quantidade",
-                DB::raw('REPLACE(pneus_veiculos.valor, ".", ",") as valor')
+                DB::raw('REPLACE(pneus_veiculos.valor, ".", ",") as valor'),
+                   DB::raw('CONCAT(pessoas.id,"-",pessoas.nome, " (",pessoas.cpf_cnpj,")") as pessoa_id')
             )
+            ->leftJoin('pessoas', 'pneus_veiculos.pessoa_id', 'pessoas.id')
             ->join('veiculos', 'pneus_veiculos.veiculo_id', 'veiculos.id')
+            ->orderBy("pneus_veiculos.id", "desc")
             ->paginate(1000);
 
 

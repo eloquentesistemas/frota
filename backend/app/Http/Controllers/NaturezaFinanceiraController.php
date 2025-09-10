@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cidade;
 use App\Models\NaturezaFinanceira;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -37,6 +39,7 @@ class NaturezaFinanceiraController extends Controller
             $search = "";
         }
         $natureza_financeiras = NaturezaFinanceira::search($search)
+            ->orderBy("natureza_financeiras.id", "desc")
         ->paginate(1000);
 
         return response()->json($natureza_financeiras);
@@ -93,6 +96,31 @@ class NaturezaFinanceiraController extends Controller
         $natureza_financeira->delete();
 
        return response()->json(["success"=>true,"message"=>"Removed success"]);
+    }
+
+    public function find(Request $request)
+    {
+
+        if (!empty($request->search)) {
+            $rows = NaturezaFinanceira::search($request->search)->select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+                ->limit(100)
+                ->get();
+            return response()->json($rows);
+        }
+
+        if (!empty($request->id)) {
+            $rows = NaturezaFinanceira::select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+                ->where('id', $request->id)
+                ->first();
+
+            return response()->json($rows);
+        }
+
+        $rows = NaturezaFinanceira::select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+
+            ->limit(25)
+            ->get();
+        return response()->json($rows);
     }
 
 }

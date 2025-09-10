@@ -81,6 +81,7 @@ class FaturamentoController extends Controller
             ->join('cidades as origens', 'faturamentos.origem_cidade_id', 'origens.id')
             ->join('cidades as destinos', 'faturamentos.destino_cidade_id', 'destinos.id')
             ->join('pessoas as clientes', 'faturamentos.pessoa_cliente_id', 'clientes.id')
+            ->orderBy("faturamentos.id", "desc")
 
         ->paginate(1000);
 

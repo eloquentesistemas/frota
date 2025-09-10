@@ -1,29 +1,29 @@
 <template>
-    <layout-page>
-        <div class="card-header">
-            <div class="row">
-                <div class="col-12 ps-4 pt-3 ">
-                    <div class="float-start">
-                        <h5>Adicionar troca de pneus</h5>
-                    </div>
-                    <div class="float-end">
-                        <button-widget cor="azul" href="./index" tamanho="M">
-                            Voltar
-                        </button-widget>
-                    </div>
-                </div>
+  <layout-page>
+    <div class="card-header">
+      <div class="row">
+        <div class="col-12 ps-4 pt-3 ">
+          <div class="float-start">
+            <h5>Adicionar troca de pneus</h5>
+          </div>
+          <div class="float-end">
+            <button-widget cor="azul" href="./index" tamanho="M">
+              Voltar
+            </button-widget>
+          </div>
+        </div>
 
-            </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <FormPneusVeiculos></FormPneusVeiculos>
+        <div class="col-4">
+          <button class="btn btn-primary mt-4" type="button" @click="sendForm">Salvar</button>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <FormPneusVeiculos></FormPneusVeiculos>
-                    <div class="col-4">
-                    <button class="btn btn-primary mt-4" type="button" @click="sendForm">Salvar</button>
-                    </div>
-                </div>
-        </div>
-    </layout-page>
+      </div>
+    </div>
+  </layout-page>
 </template>
 <script>
 import ButtonWidget from "@/components/widget/buttonWidget.vue";
@@ -33,33 +33,36 @@ import pneus_veiculoService from "@/services/pneus_veiculo.service";
 import toastr from "toastr/build/toastr.min";
 
 export default {
-    name: "CreatePneusVeiculos",
-    components: {FormPneusVeiculos, LayoutPage, ButtonWidget},
-    methods:{
-        async sendForm(){
-            let dataForm = {
+  name: "CreatePneusVeiculos",
+  components: {FormPneusVeiculos, LayoutPage, ButtonWidget},
+  methods: {
+    async sendForm() {
+      let dataForm = {
         veiculo_id: document.getElementById('veiculo_id').value,
-quilometragem: document.getElementById('quilometragem').value,
-quantidade: document.getElementById('quantidade').value,
-valor: document.getElementById('valor').value,
+        quilometragem: document.getElementById('quilometragem').value,
+        quantidade: document.getElementById('quantidade').value,
+        valor: document.getElementById('valor').value,
+        aro: document.getElementById('aro').value,
+        marca: document.getElementById('marca').value,
+        pessoa_id: document.getElementById('pessoa_id').value,
 
 
+      }
+      let pneus_veiculosService = new pneus_veiculoService();
+      let response = await pneus_veiculosService.store(dataForm);
+
+      if (response.data?.id) {
+        location.href = '/pneus_veiculos/index';
+      } else {
+        if (response.response.data?.message) {
+          toastr.error(response.response.data?.message);
+        } else {
+          toastr.error('Houve um problema ao inserir');
         }
-            let pneus_veiculosService = new pneus_veiculoService();
-            let response = await pneus_veiculosService.store(dataForm);
 
-            if(response.data?.id){
-                location.href = '/pneus_veiculos/index';
-            }else{
-                if (response.response.data?.message){
-                    toastr.error(response.response.data?.message);
-                }else{
-                    toastr.error('Houve um problema ao inserir');
-                }
-
-            }
-        }
+      }
     }
+  }
 }
 </script>
 <style scoped>

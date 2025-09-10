@@ -40,6 +40,7 @@ class CidadeController extends Controller
             $search = "";
         }
         $cidades = Cidade::search($search)
+            ->orderBy("cidades.id", "desc")
         ->paginate(1000);
 
         return response()->json($cidades);

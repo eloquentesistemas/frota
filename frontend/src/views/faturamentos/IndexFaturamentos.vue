@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-12 ps-4 pt-3 ">
                         <div class="float-start">
-                            <h5> Roteamentos</h5>
+                            <h5> Cargas</h5>
                         </div>
                         <div class="w-50">
                             <input id="search" class="form-control" @change="list()" placeholder="Digite sua pesquisa"

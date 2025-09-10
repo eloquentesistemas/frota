@@ -41,6 +41,7 @@ class PessoaVeiculoController extends Controller
         ->selectRaw('concat(pessoas.id,"-",pessoas.nome) as pessoa_id,concat(veiculos.id,"-",veiculos.nome," Placa: ",veiculos.placa," Cor: ",veiculos.cor) as veiculo_id,pessoa_veiculos.id')
         ->join('pessoas','pessoa_veiculos.pessoa_id','pessoas.id')
         ->join('veiculos','pessoa_veiculos.veiculo_id','veiculos.id')
+            ->orderBy("pessoa_veiculos.id", "desc")
             ->paginate(1000);
 
         return response()->json($pessoa_veiculos);

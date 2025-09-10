@@ -75,6 +75,7 @@ class PessoaController extends Controller
             "pessoas.descritivo"
         )
             ->join('cidades','cidades.id','=','pessoas.cidade_id')
+            ->orderBy("pessoas.id", "desc")
         ->paginate(1000);
 
         return response()->json($pessoas);
@@ -180,6 +181,32 @@ class PessoaController extends Controller
 
         $rows = Pessoa::select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
             ->where('tipo','cliente')
+            ->where('situacao','ativo')
+            ->limit(25)
+            ->get();
+        return response()->json($rows);
+    }
+    public function findFornecedor(Request $request)
+    {
+
+        if (!empty($request->search)) {
+            $rows = Pessoa::search($request->search)->select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+                ->where('tipo','fornecedor')
+                ->where('situacao','ativo')
+                ->get();
+            return response()->json($rows);
+        }
+
+        if (!empty($request->id)) {
+            $rows = Pessoa::select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+                ->where('id', $request->id)
+                ->first();
+
+            return response()->json($rows);
+        }
+
+        $rows = Pessoa::select('id as code', DB::raw('CONCAT(id,"-",nome) as label'))
+            ->where('tipo','fornecedor')
             ->where('situacao','ativo')
             ->limit(25)
             ->get();

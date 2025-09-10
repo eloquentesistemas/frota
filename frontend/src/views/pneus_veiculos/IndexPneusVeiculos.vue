@@ -55,6 +55,7 @@
                         </td>
                         
                 <td>                 <div class="col-12"> <strong>Veiculo  : </strong>{{row.veiculo_id}}</div>
+                             <div class="col-12"> <strong>Fornecedor  : </strong>{{row.pessoa_id}}</div>
                  <div class="col-12"> <strong>Quilometragem  : </strong>{{row.quilometragem}}</div>
                  <div class="col-12"> <strong>Quantidade  : </strong>{{row.quantidade}}</div>
                  <div class="col-12"> <strong>Valor  : </strong> R$ {{row.valor}}</div>

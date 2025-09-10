@@ -25,8 +25,10 @@ Route::group([
     function ($router) {
         Route::get('motorista/list', [PessoaController::class, 'findMotorista']);
         Route::get('cliente/list', [PessoaController::class, 'findCliente']);
+        Route::get('fornecedor/list', [PessoaController::class, 'findFornecedor']);
         Route::get('veiculos/list', [\App\Http\Controllers\VeiculoController::class, 'find']);
         Route::get('cidade/list', [\App\Http\Controllers\CidadeController::class, 'find']);
+        Route::get('natureza_financeiras/list', [\App\Http\Controllers\NaturezaFinanceiraController::class, 'find']);
 
         Route::get('pagamentos/detalhes/{conta_id}', [\App\Http\Controllers\PagamentoController::class, 'detalhes']);
 

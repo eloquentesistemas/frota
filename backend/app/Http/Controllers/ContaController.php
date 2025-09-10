@@ -15,23 +15,23 @@ class ContaController extends Controller
         if($type=="store"){
         $request->validate(
         [
-            'data_ocorrido'=>['nullable','date'],
-            'nome'=>['nullable','max:255','string'],
-            'modalidade'=>['nullable','max:7'],
+            'data_ocorrido'=>['required','date'],
+            'nome'=>['required','max:255','string'],
+            'modalidade'=>['required','max:7'],
             'natureza_financeira_id'=>['nullable'],
-            'valor'=>['nullable','numeric'],
-            'parcelas'=>['nullable'],
+            'valor'=>['required','numeric'],
+            'parcelas'=>['required'],
             'descritivo'=>['nullable','max:65535','string'],
         ]
         );
     }else{
         $request->validate([
-            'data_ocorrido'=>['nullable','date'],
-            'nome'=>['nullable','max:255','string'],
-            'modalidade'=>['nullable','max:7'],
+            'data_ocorrido'=>['required','date'],
+            'nome'=>['required','max:255','string'],
+            'modalidade'=>['required','max:7'],
             'natureza_financeira_id'=>['nullable'],
-            'valor'=>['nullable','numeric'],
-            'parcelas'=>['nullable'],
+            'valor'=>['required','numeric'],
+            'parcelas'=>['required'],
             'descritivo'=>['nullable','max:65535','string'],
         ]);
     }
@@ -68,6 +68,7 @@ class ContaController extends Controller
                      END) as status_pagamento")
             )
             ->leftJoin('natureza_financeiras','contas.natureza_financeira_id','natureza_financeiras.id')
+            ->orderBy("contas.id", "desc")
             ->paginate(1000);
 
         return response()->json($contas);

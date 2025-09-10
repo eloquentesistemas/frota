@@ -48,6 +48,7 @@ class VeiculoController extends Controller
         }
         $veiculos = Veiculo::search($search)
             ->select('id',"nome","placa","cor",DB::raw("DATE_FORMAT(vencimento_documento, '%d/%m/%Y') as vencimento_documento"),"ativo","descritivo")
+            ->orderBy("veiculos.id", "desc")
         ->paginate(1000);
 
         return response()->json($veiculos);

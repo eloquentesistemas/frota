@@ -41,6 +41,7 @@ class UserController extends Controller
             $search = "";
         }
         $users = User::search($search)
+            ->orderBy("users.id", "desc")
             ->where('business_id', auth()->user()->business_id)
             ->paginate(1000);
 

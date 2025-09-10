@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Conta;
 use App\Models\Pagamento;
 use App\TollBox\Helper;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -46,8 +47,19 @@ class PagamentoController extends Controller
         }
 
         $pagamentos = Pagamento::search($search)
-            ->where('pagamentos.conta_id',$request->conta_id)
-        ->paginate(1000);
+            ->orderBy("pagamentos.id", "desc")
+            ->select(
+                'pagamentos.id',
+                DB::raw("DATE_FORMAT(pagamentos.data_ocorrido, '%d/%m/%Y') as data_ocorrido"),
+                'pagamentos.valor',
+                'pagamentos.parcela',
+                'pagamentos.descritivo',
+                'pagamentos.created_at',
+                'pagamentos.updated_at',
+                'pagamentos.conta_id'
+            )
+            ->where('pagamentos.conta_id', $request->conta_id)
+            ->paginate(1000);
 
         return response()->json($pagamentos);
     }
