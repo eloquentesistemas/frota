@@ -1,7 +1,8 @@
 <template>
       <input-form placeholder="Selecione motorista  " class-list="col-12" type="select2" url="/api/motorista/list" label="Motorista  " value="" name="pessoa_motorista_id"/>
   <input-form placeholder="Selecione veiculo  " class-list="col-6" type="select2" url="/api/veiculos/list" label="Veiculo  " value="" name="veiculo_id"/>
-<input-form class-list="col-6"  type="datetime" label="Data de embarque  " value="" name="data_embarque"/>
+<input-form class-list="col-6"  type="date" label="Data de embarque  " value="" name="data_embarque"/>
+<input-form class-list="col-6"  type="date" label="Data de Descargar  " value="" name="data_descargar"/>
   <input-form placeholder="Selecione cidade de origem  " class-list="col-6" type="select2" url="/api/cidade/list" label="Cidade de origem " value="" name="origem_cidade_id"/>
 <input-form class-list="col-6"  type="text" label="Local de Origem  " value="" name="origem_local"/>
   <input-form placeholder="Selecione  cidade de  destino  " class-list="col-6" type="select2" url="/api/cidade/list" label="Cidade de Destino  " value="" name="destino_cidade_id"/>

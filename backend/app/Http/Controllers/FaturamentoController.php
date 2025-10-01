@@ -17,7 +17,8 @@ class FaturamentoController extends Controller
         [
             'pessoa_motorista_id'=>['nullable'],
             'veiculo_id'=>['nullable'],
-            'data_embarque'=>['nullable','boolean'],
+            'data_embarque'=>['nullable','date'],
+            'data_descargar'=>['nullable','date'],
             'origem_cidade_id'=>['nullable'],
             'origem_local'=>['nullable','max:65535','string'],
             'destino_cidade_id'=>['nullable'],
@@ -36,7 +37,8 @@ class FaturamentoController extends Controller
         $request->validate([
             'pessoa_motorista_id'=>['nullable'],
             'veiculo_id'=>['nullable'],
-            'data_embarque'=>['nullable','boolean'],
+            'data_embarque'=>['nullable','date'],
+            'data_descargar'=>['nullable','date'],
             'origem_cidade_id'=>['nullable'],
             'origem_local'=>['nullable','max:65535','string'],
             'destino_cidade_id'=>['nullable'],
@@ -51,7 +53,7 @@ class FaturamentoController extends Controller
             'descritivo'=>['nullable','max:65535','string'],
         ]);
     }
-        return $request->only(["pessoa_motorista_id","veiculo_id","data_embarque","origem_cidade_id","origem_local","destino_cidade_id","destino_local","pessoa_cliente_id","danfe","peso","valor_acerto_motorista","valor_total","DMT","carga","descritivo"]);
+        return $request->only(["pessoa_motorista_id","veiculo_id","data_embarque","origem_cidade_id","origem_local","destino_cidade_id","destino_local","pessoa_cliente_id","danfe","peso","valor_acerto_motorista","valor_total","DMT","carga","descritivo","data_descargar"]);
     }
     /**
      * Display a listing of the resource.
@@ -69,6 +71,7 @@ class FaturamentoController extends Controller
                 DB::raw('concat(veiculos.id,"-",veiculos.nome," Placa: ",veiculos.placa," Cor: ",veiculos.cor) as veiculo_id'),
                 'motoristas.nome  as pessoa_motorista_id',
                 DB::raw("DATE_FORMAT(faturamentos.data_embarque, '%d/%m/%Y') as data_embarque"),
+                DB::raw("DATE_FORMAT(faturamentos.data_descargar, '%d/%m/%Y') as data_descargar"),
                 DB::raw('concat(origens.nome," (",origens.uf,")") as origem_cidade_id'),
                 DB::raw('concat(destinos.nome," (",destinos.uf,")") as destino_cidade_id'),
                 DB::raw('concat(clientes.nome," (",clientes.cpf_cnpj,")") as pessoa_cliente_id'),
@@ -76,11 +79,11 @@ class FaturamentoController extends Controller
 
 
             )
-            ->join('veiculos', 'faturamentos.veiculo_id', 'veiculos.id')
-            ->join('pessoas as motoristas', 'faturamentos.pessoa_motorista_id', 'motoristas.id')
-            ->join('cidades as origens', 'faturamentos.origem_cidade_id', 'origens.id')
-            ->join('cidades as destinos', 'faturamentos.destino_cidade_id', 'destinos.id')
-            ->join('pessoas as clientes', 'faturamentos.pessoa_cliente_id', 'clientes.id')
+            ->leftJoin('veiculos', 'faturamentos.veiculo_id', 'veiculos.id')
+            ->leftJoin('pessoas as motoristas', 'faturamentos.pessoa_motorista_id', 'motoristas.id')
+            ->leftJoin('cidades as origens', 'faturamentos.origem_cidade_id', 'origens.id')
+            ->leftJoin('cidades as destinos', 'faturamentos.destino_cidade_id', 'destinos.id')
+            ->leftJoin('pessoas as clientes', 'faturamentos.pessoa_cliente_id', 'clientes.id')
             ->orderBy("faturamentos.id", "desc")
 
         ->paginate(1000);

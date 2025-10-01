@@ -57,6 +57,7 @@
                 <td>                 <div class="col-12"> <strong>Motorista  : </strong>{{row.pessoa_motorista_id}}</div>
                  <div class="col-12"> <strong>Veiculo  : </strong>{{row.veiculo_id}}</div>
                  <div class="col-12"> <strong>Data de embarque  : </strong>{{row.data_embarque}}</div>
+                 <div class="col-12"> <strong>Data de descargar  : </strong>{{row.data_descargar}}</div>
                  <div class="col-12"> <strong>Origem cidade  : </strong>{{row.origem_cidade_id}}</div>
 </td>
                 <td>                 <div class="col-12"> <strong>Destino cidade  : </strong>{{row.destino_cidade_id}}</div>

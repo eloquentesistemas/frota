@@ -74,7 +74,7 @@ class PessoaController extends Controller
             "pessoas.numero",
             "pessoas.descritivo"
         )
-            ->join('cidades','cidades.id','=','pessoas.cidade_id')
+            ->leftJoin('cidades','cidades.id','=','pessoas.cidade_id')
             ->orderBy("pessoas.id", "desc")
         ->paginate(1000);
 

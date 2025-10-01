@@ -36,6 +36,12 @@ import editPneusVeiculos from "@/views/pneus_veiculos/EditPneusVeiculos.vue";
 import createVeiculos from "@/views/veiculos/CreateVeiculos.vue";
 import indexVeiculos from "@/views/veiculos/IndexVeiculos.vue";
 import editVeiculos from "@/views/veiculos/EditVeiculos.vue";
+import createCalibracaos from "@/views/calibracaos/CreateCalibracaos.vue";
+import indexCalibracaos from "@/views/calibracaos/IndexCalibracaos.vue";
+import editCalibracaos from "@/views/calibracaos/EditCalibracaos.vue";
+import createLubrificacaos from "@/views/lubrificacaos/CreateLubrificacaos.vue";
+import indexLubrificacaos from "@/views/lubrificacaos/IndexLubrificacaos.vue";
+import editLubrificacaos from "@/views/lubrificacaos/EditLubrificacaos.vue";
 const routes = [
     {
         path: '/login',
@@ -278,6 +284,44 @@ const routes = [
         path: '/veiculos/edit/:id',
         name: 'editVeiculos',
         component: editVeiculos,
+        meta: { auth: true }
+    },
+    // calibracaos
+    {
+        path: '/calibracaos/create',
+        name: 'calibracaosCreate',
+        component: createCalibracaos,
+        meta: { auth: true }
+    },
+    {
+        path: '/calibracaos/index',
+        name: 'indexCalibracaos',
+        component: indexCalibracaos,
+        meta: { auth: true }
+    },
+    {
+        path: '/calibracaos/edit/:id',
+        name: 'editCalibracaos',
+        component: editCalibracaos,
+        meta: { auth: true }
+    },
+    // lubrificacaos
+    {
+        path: '/lubrificacaos/create',
+        name: 'createLubrificacaos',
+        component: createLubrificacaos,
+        meta: { auth: true }
+    },
+    {
+        path: '/lubrificacaos/index',
+        name: 'indexLubrificacaos',
+        component: indexLubrificacaos,
+        meta: { auth: true }
+    },
+    {
+        path: '/lubrificacaos/edit/:id',
+        name: 'editLubrificacaos',
+        component: editLubrificacaos,
         meta: { auth: true }
     },
 

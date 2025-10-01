@@ -10,7 +10,7 @@ class Faturamento extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["pessoa_motorista_id","veiculo_id","data_embarque","origem_cidade_id","origem_local","destino_cidade_id","destino_local","pessoa_cliente_id","danfe","peso","valor_acerto_motorista","valor_total","DMT","carga","descritivo"];
+    protected $fillable = ["pessoa_motorista_id","veiculo_id","data_embarque","origem_cidade_id","origem_local","destino_cidade_id","destino_local","pessoa_cliente_id","danfe","peso","valor_acerto_motorista","valor_total","DMT","carga","descritivo","data_descargar"];
 
     protected $searchableFields = [
         "faturamentos.pessoa_motorista_id",

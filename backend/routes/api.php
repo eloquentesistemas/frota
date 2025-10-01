@@ -49,6 +49,9 @@ Route::group([
         Route::resource('faturamentos', \App\Http\Controllers\FaturamentoController::class)->except(['create', 'edit']);
         Route::resource('contas', \App\Http\Controllers\ContaController::class)->except(['create', 'edit']);
 
+        Route::resource('calibracaos', \App\Http\Controllers\CalibracaoController::class)->except(['create', 'edit']);
+        Route::resource('lubrificacaos', \App\Http\Controllers\LubrificacaoController::class)->except(['create', 'edit']);
+
 
     });
 
