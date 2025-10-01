@@ -1,0 +1,51 @@
+###LIST LUBRIFICACAOS
+GET http://localhost:8000/api/lubrificacaos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER LUBRIFICACAOS
+GET http://localhost:8000/api/lubrificacaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR LUBRIFICACAOS
+POST http://localhost:8000/api/lubrificacaos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "data":"2001-05-11",
+    "pessoa_id":1,
+    "veiculo_id":1,
+    "servico":"Loren Epsun",
+    "km":1
+
+}
+####MUDAR LUBRIFICACAOS
+POST http://localhost:8000/api/lubrificacaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "data":"2001-05-11",
+    "pessoa_id":1,
+    "veiculo_id":1,
+    "servico":"Loren Epsun",
+    "km":1
+
+}
+
+####APAGAR LUBRIFICACAOS
+POST http://localhost:8000/api/lubrificacaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}

@@ -1,0 +1,51 @@
+###LIST CALIBRACAOS
+GET http://localhost:8000/api/calibracaos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+###VER CALIBRACAOS
+GET http://localhost:8000/api/calibracaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+####ADICIONAR CALIBRACAOS
+POST http://localhost:8000/api/calibracaos
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "data":"2001-05-11",
+    "pessoa_id":1,
+    "veiculo_id":1,
+    "servico":"Loren Epsun",
+    "km":1
+
+}
+####MUDAR CALIBRACAOS
+POST http://localhost:8000/api/calibracaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "PUT",
+    "data":"2001-05-11",
+    "pessoa_id":1,
+    "veiculo_id":1,
+    "servico":"Loren Epsun",
+    "km":1
+
+}
+
+####APAGAR CALIBRACAOS
+POST http://localhost:8000/api/calibracaos/1
+Authorization: Bearer :hash
+Content-Type: application/json
+Accept: application/json
+
+{
+    "_method": "DELETE"
+}
