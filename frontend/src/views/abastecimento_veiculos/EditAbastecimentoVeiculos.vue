@@ -47,6 +47,8 @@ export default {
       document.getElementById('valor').value = response.data.valor;
       document.getElementById('pessoa_id').value = response.data.pessoa_id;
       document.getElementById('numero_nota').value = response.data.numero_nota;
+      document.getElementById('tipo').value = response.data.tipo;
+      document.getElementById('descritivo').value = response.data.descritivo;
 
 
     },
@@ -58,7 +60,8 @@ export default {
         valor: document.getElementById('valor').value,
         pessoa_id: document.getElementById('pessoa_id').value,
         numero_nota: document.getElementById('numero_nota').value,
-
+        tipo: document.getElementById('tipo').value,
+        descritivo: document.getElementById('descritivo').value,
         _method: 'PUT'
 
       }

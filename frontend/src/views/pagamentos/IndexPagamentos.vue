@@ -22,7 +22,7 @@
                                 Adicionar
                             </button-widget>
 
-                          <button-widget class="ms-2" cor="azul" href="/contas/index" tamanho="M">
+                          <button-widget class="ms-2" cor="azul" :href="urlVoltar" tamanho="M">
                             Voltar
                           </button-widget>
                         </div>
@@ -45,7 +45,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <router-link class="dropdown-item" :to="'/pagamentos/edit/'+row.id">
+                                        <router-link class="dropdown-item" :to="'/pagamentos/edit/'+row.id+'?tipo='+tipo">
                                             <i class="bi bi-pencil-square"></i>
                                             Editar
                                         </router-link>
@@ -116,9 +116,11 @@ export default {
             rows: null,
             search: null,
           urlCreate:null,
+          urlVoltar:null,
           nomeConta:null,
           valorConta:null,
-          detalhes:null
+          detalhes:null,
+          tipo:null,
         }
     },
     methods: {
@@ -148,18 +150,27 @@ export default {
             }else{
                 toastr.error('Houve um problema ao apagar');
             }
-        }
+        },
+        async setURL(){
+          this.urlCreate  = '/pagamentos/create/'+ this.$route.params.conta_id+'?tipo='+this.tipo;
+          this.urlVoltar = '/contas/index?tipo='+this.tipo
+        },
+      async setTotalizadores(){
+        let contasService = new contaService();
+        let response = await contasService.view(this.$route.params.conta_id);
+        this.nomeConta  = response.data.nome;
+        this.valorConta  = response.data.valor;
+        this.valorConta = this.valorConta.replace('.',',')
+      }
+
 
     },
     async mounted() {
-        this.list(this.$route.params.conta_id);
-        this.urlCreate  = '/pagamentos/create/'+ this.$route.params.conta_id;
-      let contasService = new contaService();
-      let response = await contasService.view(this.$route.params.conta_id);
-      this.nomeConta  = response.data.nome;
-      this.valorConta  = response.data.valor;
-      this.valorConta = this.valorConta.replace('.',',')
-      let pagamentosService = new pagamentoService();
+        this.tipo = await this.$route.query.tipo;
+      await this.setURL();
+      await this.list(this.$route.params.conta_id);
+      await  this.setTotalizadores()
+      let pagamentosService = await new pagamentoService();
       this.detalhes = await pagamentosService.detalhes(this.$route.params.conta_id);
 
     }

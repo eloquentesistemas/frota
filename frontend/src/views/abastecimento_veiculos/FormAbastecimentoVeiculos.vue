@@ -1,5 +1,4 @@
 <template>
-
   <input-form placeholder="Selecione Fornecedor  " class-list="col-12" type="select2" url="/api/fornecedor/list"  label="Fornecedor  " value="" name="pessoa_id"/>
   <input-form placeholder="Selecione Veiculo  " class-list="col-12" type="select2" url="/api/veiculos/list"
               label="Veiculo  " value="" name="veiculo_id"/>
@@ -7,8 +6,8 @@
   <input-form class-list="col-12" type="decimal" label="Litro(s) Abastecido(s)  " value="" name="litros"/>
   <input-form class-list="col-12" type="decimal" label="Valor por Litro " value="" name="valor"/>
   <input-form class-list="col-12" type="bigint" label="Número de Nota  " value="" name="numero_nota"/>
-
-
+  <input-form placeholder="Selecione Tipo" class-list="col-4" type="select" :items="[{id:'diesel',message:'Diesel',},{id:'arla',message:'Arla',},{id:'diesel_mais_arla',message:'Diesel + arla',},]" label="Tipo  " value="" name="tipo"/>
+  <input-form class-list="col-12" type="text" label="Detalhes  " value="" name="descritivo"/>
 </template>
 
 <script>

@@ -10,9 +10,9 @@ class Calibracao extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["calibracaos.data","calibracaos.pessoa_id","calibracaos.veiculo_id","calibracaos.servico","calibracaos.km"];
+    protected $fillable = ["data","pessoa_id","veiculo_id","servico","km","valor"];
 
-    protected $searchableFields =  ["calibracaos.data","calibracaos.pessoa_id","calibracaos.veiculo_id","calibracaos.servico","calibracaos.km"];
+    protected $searchableFields =  ["calibracaos.data","calibracaos.pessoa_id","calibracaos.veiculo_id","calibracaos.servico","calibracaos.km","calibracaos.valor"];
 
 
    public function Pessoa()

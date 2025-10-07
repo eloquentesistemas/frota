@@ -44,6 +44,8 @@ export default {
         valor: document.getElementById('valor').value,
         pessoa_id: document.getElementById('pessoa_id').value,
         numero_nota: document.getElementById('numero_nota').value,
+        tipo: document.getElementById('tipo').value,
+        descritivo: document.getElementById('descritivo').value,
 
 
       }

@@ -10,7 +10,7 @@ class Conta extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["data_ocorrido","nome","modalidade","natureza_financeira_id","valor","parcelas","descritivo"];
+    protected $fillable = ["data_ocorrido","nome","modalidade","natureza_financeira_id","valor","parcelas","descritivo","model_id","tabela"];
 
     protected $searchableFields = ["contas.data_ocorrido","contas.nome","contas.modalidade","contas.natureza_financeira_id","contas.valor","contas.parcelas","contas.descritivo"];
 

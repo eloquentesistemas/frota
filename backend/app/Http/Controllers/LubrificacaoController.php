@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Conta;
 use App\Models\Lubrificacao;
+use App\Models\Pessoa;
+use App\Models\Veiculo;
+use App\TollBox\ExceptionLogSchema;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -21,6 +26,7 @@ class LubrificacaoController extends Controller
                     'veiculo_id' => ['required'],
                     'servico' => ['required', 'max:255', 'string'],
                     'km' => ['required'],
+                    'valor' => ['nullable', 'numeric'],
                 ]
             );
         } else {
@@ -30,9 +36,10 @@ class LubrificacaoController extends Controller
                 'veiculo_id' => ['required'],
                 'servico' => ['required', 'max:255', 'string'],
                 'km' => ['required'],
+                'valor' => ['nullable', 'numeric'],
             ]);
         }
-        return $request->only(["data", "pessoa_id", "veiculo_id", "servico", "km"]);
+        return $request->only(["data", "pessoa_id", "veiculo_id", "servico", "km", "valor"]);
     }
 
     /**
@@ -53,11 +60,12 @@ class LubrificacaoController extends Controller
                 'lubrificacaos.data',
                 'lubrificacaos.servico',
                 'lubrificacaos.km',
+                DB::raw('REPLACE( lubrificacaos.valor, ".", ",") as valor'),
                 'lubrificacaos.created_at',
                 'lubrificacaos.updated_at',
             )
-            ->leftJoin('pessoas','lubrificacaos.pessoa_id','pessoas.id')
-            ->leftJoin('veiculos','lubrificacaos.veiculo_id','veiculos.id')
+            ->leftJoin('pessoas', 'lubrificacaos.pessoa_id', 'pessoas.id')
+            ->leftJoin('veiculos', 'lubrificacaos.veiculo_id', 'veiculos.id')
             ->paginate(1000);
 
         return response()->json($lubrificacaos);
@@ -69,10 +77,22 @@ class LubrificacaoController extends Controller
      */
     public function store(Request $request): JsonResponse
     {
+        try {
+            DB::beginTransaction();
+            $validated = $this->validated("store", $request);
 
-        $validated = $this->validated("store", $request);
+            $lubrificacao = Lubrificacao::create($validated);
 
-        $lubrificacao = Lubrificacao::create($validated);
+            $this->addContasPagar($lubrificacao);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            ExceptionLogSchema::error($e);
+            return response()->json(['message' => $e->getMessage()], 422);
+
+        }
+
 
         return response()->json($lubrificacao);
     }
@@ -96,13 +116,24 @@ class LubrificacaoController extends Controller
                 $id
     ): JsonResponse
     {
+        try {
+            DB::beginTransaction();
+            $lubrificacao = Lubrificacao::find($id);
+            $validated = $this->validated("update", $request);
 
-        $lubrificacao = Lubrificacao::find($id);
-        $validated = $this->validated("update", $request);
+            $lubrificacao->update($validated);
 
-        $lubrificacao->update($validated);
+            $this->updateContasPagar($lubrificacao);
+            DB::commit();
+            return response()->json($lubrificacao);
 
-        return response()->json($lubrificacao);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            ExceptionLogSchema::error($e);
+            return response()->json(['message' => $e->getMessage()], 422);
+
+        }
     }
 
     /**
@@ -112,8 +143,57 @@ class LubrificacaoController extends Controller
     {
         $lubrificacao = Lubrificacao::find($id);
         $lubrificacao->delete();
+        Conta::where('model_id', $id)->delete();
 
         return response()->json(["success" => true, "message" => "Removed success"]);
+    }
+
+    private function addContasPagar($lubrificacao): void
+    {
+        $pessoa = Pessoa::select(DB::raw('CONCAT(pessoas.id,"-",pessoas.nome, " (",pessoas.cpf_cnpj,")") as pessoa'))->where('pessoas.id', $lubrificacao['pessoa_id'])->first();
+        $veiculo = Veiculo::select(DB::raw('concat(veiculos.id,"-",veiculos.nome," Placa: ",veiculos.placa," Cor: ",veiculos.cor) as veiculo'))->where('veiculos.id', $lubrificacao['veiculo_id'])->first();
+        $payload = [
+            'data_ocorrido' => Carbon::now(),
+            'nome' => $pessoa->pessoa,
+            'modalidade' => 'pagar',
+            'natureza_financeira_id' => null,
+            'valor' => $lubrificacao['valor'],
+            'parcelas' => 1,
+            'descritivo' => 'Contas a pagar de lubrificação , ID:' . $lubrificacao['id'] . ',' . ' Veiculo: ' . $veiculo->veiculo . ' Serviço: ' . $lubrificacao['servico'],
+            'model_id' => $lubrificacao['id'],
+            'tabela' => 'lubrificacaos',
+        ];
+
+        Conta::create($payload);
+
+    }
+
+    private function updateContasPagar($lubrificacao): bool
+    {
+        $pessoa = Pessoa::select(DB::raw('CONCAT(pessoas.id,"-",pessoas.nome, " (",pessoas.cpf_cnpj,")") as pessoa'))->where('pessoas.id', $lubrificacao->pessoa_id)->first();
+        $veiculo = Veiculo::select(DB::raw('concat(veiculos.id,"-",veiculos.nome," Placa: ",veiculos.placa," Cor: ",veiculos.cor) as veiculo'))->where('veiculos.id', $lubrificacao->veiculo_id)->first();
+        $payload = [
+            'data_ocorrido' => Carbon::now(),
+            'nome' => $pessoa->pessoa,
+            'modalidade' => 'pagar',
+            'natureza_financeira_id' => null,
+            'valor' => $lubrificacao->valor,
+            'parcelas' => 1,
+            'descritivo' => 'Contas a pagar de lubrificação , ID:' . $lubrificacao->id . ',' . ' Veiculo: ' . $veiculo->veiculo . ' Serviço: ' . $lubrificacao->servico,
+            'tabela' => 'lubrificacaos',
+        ];
+        $conta = Conta::where('model_id', $lubrificacao->id)->first();
+        if (empty($conta)) {
+            $payload['model_id'] = $lubrificacao['id'];
+            $payload['tabela'] = 'lubrificacaos';
+
+            Conta::create($payload);
+            return false;
+        }
+        $conta->update($payload);
+        return true;
+
+
     }
 
 }

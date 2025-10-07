@@ -10,7 +10,7 @@ class Lubrificacao extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["lubrificacaos.data","lubrificacaos.pessoa_id","lubrificacaos.veiculo_id","lubrificacaos.servico","lubrificacaos.km"];
+    protected $fillable = ["data","pessoa_id","veiculo_id","servico","km","valor"];
 
     protected $searchableFields = ["lubrificacaos.data","lubrificacaos.pessoa_id","lubrificacaos.veiculo_id","lubrificacaos.servico","lubrificacaos.km"];
 

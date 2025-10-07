@@ -2,14 +2,17 @@ import RequestHelper from "@/services/RequestHelper";
 import Helpers from "@/services/Helpers";
 
 export default class ContasService {
-    async list(search) {
-        let dataRequest = {};
+    async list(search,payload) {
+        let dataRequest = {
+            tipo:payload.tipo
+        };
         let requestHelper = new RequestHelper();
         let helpers = new Helpers();
 
         if (!helpers.empty(search)) {
             dataRequest = {
-                search: search
+                search: search,
+                tipo:payload.tipo
             };
         }
 

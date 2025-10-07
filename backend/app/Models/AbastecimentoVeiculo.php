@@ -10,7 +10,7 @@ class AbastecimentoVeiculo extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ["veiculo_id","quilometragem","litros","valor",'pessoa_id','numero_nota'];
+    protected $fillable = ["veiculo_id","quilometragem","litros","valor",'pessoa_id','numero_nota',"tipo","descritivo"];
 
     protected $searchableFields = ["abastecimento_veiculos.veiculo_id","abastecimento_veiculos.quilometragem","abastecimento_veiculos.litros","abastecimento_veiculos.valor"];
 

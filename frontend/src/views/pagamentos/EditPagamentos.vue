@@ -50,19 +50,22 @@ export default {
     return {
       urlVoltar : null,
       conta_id : null,
-      detalhes:null
+      detalhes:null,
+      tipo:null
     }
   },
   methods: {
     async edit(id) {
       let pagamentosService = new pagamentoService();
       let response = await pagamentosService.view(id);
+      this.tipo = this.$route.query.tipo;
+
       document.getElementById('data_ocorrido').value = response.data.data_ocorrido;
       document.getElementById('valor').value = response.data.valor;
       document.getElementById('parcela').value = response.data.parcela;
       document.getElementById('descritivo').value = response.data.descritivo;
       this.conta_id = response.data.conta_id;
-      this.urlVoltar = '/pagamentos/index/'+this.conta_id
+      this.urlVoltar = '/pagamentos/index/'+this.conta_id+'?tipo='+this.tipo
 
 
     },

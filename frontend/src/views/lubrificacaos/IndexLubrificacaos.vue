@@ -58,6 +58,7 @@
                  <div class="col-12"> <strong>Cliente : </strong>{{row.pessoa_id}}</div>
                  <div class="col-12"> <strong>Veículo : </strong>{{row.veiculo_id}}</div>
                  <div class="col-12"> <strong>Serviço : </strong>{{row.servico}}</div>
+                 <div class="col-12"> <strong>Valor : </strong>{{row.valor}}</div>
                  <div class="col-12"> <strong>Km : </strong>{{row.km}}</div>
 </td>
                 <td></td>

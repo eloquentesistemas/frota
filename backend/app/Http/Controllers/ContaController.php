@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Conta;
+use App\TollBox\Helper;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -28,7 +29,6 @@ class ContaController extends Controller
         $request->validate([
             'data_ocorrido'=>['required','date'],
             'nome'=>['required','max:255','string'],
-            'modalidade'=>['required','max:7'],
             'natureza_financeira_id'=>['nullable'],
             'valor'=>['required','numeric'],
             'parcelas'=>['required'],
@@ -68,6 +68,7 @@ class ContaController extends Controller
                      END) as status_pagamento")
             )
             ->leftJoin('natureza_financeiras','contas.natureza_financeira_id','natureza_financeiras.id')
+            ->where('contas.modalidade',$request->tipo)
             ->orderBy("contas.id", "desc")
             ->paginate(1000);
 

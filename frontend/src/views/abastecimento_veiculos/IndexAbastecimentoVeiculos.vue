@@ -64,6 +64,7 @@
 
               <div class="col-12"><strong>Litros : </strong>{{ row.litros }}</div>
               <div class="col-12"><strong>Valor : </strong>R$ {{ row.valor }}</div>
+              <div class="col-12"><strong>Tipos : </strong> {{ row.tipo }}</div>
             </td>
 
           </tr>

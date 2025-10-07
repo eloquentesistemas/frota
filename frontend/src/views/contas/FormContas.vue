@@ -1,9 +1,6 @@
 <template>
   <input-form class-list="col-4" type="date" label="Data da conta  " value="" name="data_ocorrido"/>
   <input-form class-list="col-8" type="string" label="Nome  " value="" name="nome"/>
-  <input-form placeholder="Selecione Modalidade  " class-list="col-4" type="select"
-              :items="[{id:'pagar',message:'pagar',},{id:'receber',message:'receber',},]" label="Modalidade  " value=""
-              name="modalidade"/>
   <input-form class-list="col-4" type="decimal" label="Valor  " value="" name="valor"/>
   <input-form class-list="col-4" type="bigint" label="Parcelas  " value="" name="parcelas"/>
   <input-form placeholder="Selecione Natureza Financeira  " class-list="col-12" type="select2"

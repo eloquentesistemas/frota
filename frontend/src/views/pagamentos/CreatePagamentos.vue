@@ -79,7 +79,8 @@ export default {
     }
   },
   async mounted() {
-    this.urlVoltar = '/pagamentos/index/' + this.$route.params.conta_id;
+    this.tipo = await this.$route.query.tipo;
+    this.urlVoltar = await '/pagamentos/index/' + this.$route.params.conta_id+'?tipo='+this.tipo;
     console.log(this.urlVoltar)
     let pagamentosService = new pagamentoService();
     this.detalhes = await pagamentosService.detalhes(this.$route.params.conta_id);
