@@ -63,13 +63,26 @@
                 <th>Motorista</th>
                 <th>Veículo</th>
                 <th>Placa</th>
-                <th>Origem</th>
-                <th>Destino</th>
+                <th>Cidade Origem</th>
+                <th>Cidade Destino</th>
                 <th>Data Embarque</th>
                 <th>Valor Total</th>
                 <th>Valor Acerto Motorista</th>
             </tr>
             </thead>
+            <tbody></tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
         </table>
     </div>
 @endsection
@@ -122,6 +135,7 @@
                     footer: true,
                 }
             ];
+
             var table = $('#faturamento-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -147,7 +161,41 @@
                     { data: 'valor_acerto_motorista', name: 'faturamentos.valor_acerto_motorista' },
                 ],
                 dom: 'Bfrtip',
-                buttons:buttons
+                buttons: buttons,
+                footerCallback: function (row, data, start, end, display) {
+                    var api = this.api();
+
+                    // Calculate total for valor_total and valor_acerto_motorista
+                    var valorTotal = api
+                        .column(6, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            let valor = String(b).replace('R$ ','').replace('.','').replace(',','.');
+                            return a + parseFloat(valor || 0);
+                        }, 0);
+
+                    var valorAcertoMotorista = api
+                        .column(7, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            let valor = String(b).replace('R$ ','').replace('.','').replace(',','.');
+                            return a + parseFloat(valor || 0);
+                        }, 0);
+
+                    // Get total row count for the current page
+                    var rowCount = api.rows({ page: 'current' }).count();
+
+                    // Update footer
+                    $(api.column(6).footer()).html(
+                        'R$ ' + valorTotal.toFixed(2)
+                    );
+                    $(api.column(7).footer()).html(
+                        'R$ ' + valorAcertoMotorista.toFixed(2)
+                    );
+                    $(api.column(0).footer()).html(
+                        'Total: ' + rowCount + ' linhas'
+                    );
+                }
             });
 
             $('#motorista_id,#veiculo_id,#origem_cidade_id,#destino_cidade_id,#data_inicio,#data_fim').change(function(){
